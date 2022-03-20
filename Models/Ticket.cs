@@ -11,12 +11,13 @@ namespace TicketingSystem.Models
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Please decide a sprint number for the ticket.")]
-        public int SprintNum { get; set; }
+        public string SprintNum { get; set; }
 
         [Required(ErrorMessage = "Please decide a point value for the ticket.")]
-        public int PointVal { get; set; }
+        public string PointVal { get; set; }
 
         [Required(ErrorMessage = "Please select a status for the ticket.")]
         public string StatusId { get; set; }
+        public Status Status { get; set; }
     }
 }

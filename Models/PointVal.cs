@@ -1,6 +1,6 @@
 ﻿namespace TicketingSystem.Models
 {
-    public class Status
+    public class PointVal
     {
         public string Id { get; set; }
         public string Name { get; set; }
