@@ -24,7 +24,7 @@ namespace TicketingSystem.Controllers
             ViewBag.Statuses = context.Statuses.ToList();
             ViewBag.StatusFilters = Filters.StatusFilterValues;
 
-            IQueryable<Ticket> query = context.Tickets.Include(t => t.SprintNum).Include(t => t.PointVal).Include(t => t.Status).OrderBy(t => t.StatusId);
+            IQueryable<Ticket> query = context.Tickets;
             if (filters.HasSprintNum)
             {
                 query = query.Where(t => t.SprintNum == filters.SprintNum);
