@@ -54,12 +54,14 @@ namespace TicketingSystem.Controllers
         [HttpPost]
         public IActionResult Add(Ticket newticket)
         {
+            // If there are no validation errors
             if (ModelState.IsValid)
             {
-                context.Tickets.Add(newticket);
-                context.SaveChanges();
-                return RedirectToAction("Index");
+                context.Tickets.Add(newticket); // Add ticket
+                context.SaveChanges(); // Save
+                return RedirectToAction("Index"); // Return to Home Page
             }
+            // If there are validation errors
             else
             {
                 ViewBag.SprintNums = context.SprintNums.ToList();

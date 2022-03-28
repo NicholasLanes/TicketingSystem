@@ -27,8 +27,6 @@
     </div>
 
     <div class="col-sm-10">
-        <a asp-action="Add"><b>Add New Ticket</b></a>
-
         <table class="table table-bordered table-striped mt-2">
             <thead>
                 <tr>
@@ -45,7 +43,7 @@
                         <td>@ticket.Name</td>
                         <td>@ticket.SprintNum</td>
                         <td>@ticket.PointVal</td>
-                        <td>@ticket.StatusId</td>
+                        <td>@ticket.Status.Name</td>
                         <td>
                             <form asp-action="Edit" method="post" asp-route-id="@ViewBag.Filters.FilterString" class="mr-2">
                                 <input type="hidden" name="@nameof(Ticket.Id)" value="@ticket.Id">
@@ -61,5 +59,6 @@
                 }
             </tbody>
         </table>
+        <a asp-action="Add" class="btn-link"><h3>Add New Ticket</h3></a>
     </div>
 </div>
