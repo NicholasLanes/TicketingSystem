@@ -1,5 +1,5 @@
 # TicketingSystem
- Chapter 10 + 11 Adv. C# Assignment
+ Chapter 10 + 11 + 12 Adv. C# Assignment
 
 Program Description:
 This program is a rudimentary ticketing system utilizing Agile methodology. Primarily follows the ToDo List example from Murach's ASP.NET Core Chapter 10. Allows for creating and filtering of tickets by Name, Sprint Number, Point Value, and Status. 
