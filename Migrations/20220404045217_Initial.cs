@@ -11,7 +11,7 @@ namespace TicketingSystem.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -24,10 +24,11 @@ namespace TicketingSystem.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SprintNum = table.Column<int>(type: "int", nullable: false),
-                    PointVal = table.Column<int>(type: "int", nullable: false),
-                    StatusId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    SprintNum = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PointVal = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StatusId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -45,9 +46,9 @@ namespace TicketingSystem.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { "td", "ToDo" },
-                    { "ip", "InProgress" },
-                    { "qa", "QualityAssurance" },
+                    { "t", "To-Do" },
+                    { "i", "In Progress" },
+                    { "q", "Quality Assurance" },
                     { "d", "Done" }
                 });
 

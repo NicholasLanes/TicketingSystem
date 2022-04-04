@@ -13,6 +13,7 @@ namespace TicketingSystem.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<SprintNum>().HasData(
                 new SprintNum { Id = "1", Name = "1" },
                 new SprintNum { Id = "2", Name = "2" },
@@ -39,12 +40,8 @@ namespace TicketingSystem.Models
                 new PointVal { Id = "89", Name = "89" }
                 );
 
-            modelBuilder.Entity<Status>().HasData(
-                new Status { Id = "td", Name = "ToDo" },
-                new Status { Id = "ip", Name = "InProgress" },
-                new Status { Id = "qa", Name = "QualityAssurance" },
-                new Status { Id = "d", Name = "Done" }
-                );
+            modelBuilder.ApplyConfiguration(new StatusConfig()); // applying configuration class to import data from StatusConfig
+
             
         }
     }

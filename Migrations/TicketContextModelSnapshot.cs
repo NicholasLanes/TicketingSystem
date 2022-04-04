@@ -154,6 +154,7 @@ namespace TicketingSystem.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -163,18 +164,18 @@ namespace TicketingSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "td",
-                            Name = "ToDo"
+                            Id = "t",
+                            Name = "To-Do"
                         },
                         new
                         {
-                            Id = "ip",
-                            Name = "InProgress"
+                            Id = "i",
+                            Name = "In Progress"
                         },
                         new
                         {
-                            Id = "qa",
-                            Name = "QualityAssurance"
+                            Id = "q",
+                            Name = "Quality Assurance"
                         },
                         new
                         {
@@ -190,9 +191,15 @@ namespace TicketingSystem.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("PointVal")
                         .IsRequired()

@@ -2,26 +2,10 @@
 
 namespace TicketingSystem.Migrations
 {
-    public partial class Second : Migration
+    public partial class PointValSprintNumOptions : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
-                name: "SprintNum",
-                table: "Tickets",
-                type: "nvarchar(max)",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "int");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "PointVal",
-                table: "Tickets",
-                type: "nvarchar(max)",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "int");
-
             migrationBuilder.CreateTable(
                 name: "PointVals",
                 columns: table => new
@@ -88,22 +72,6 @@ namespace TicketingSystem.Migrations
 
             migrationBuilder.DropTable(
                 name: "SprintNums");
-
-            migrationBuilder.AlterColumn<int>(
-                name: "SprintNum",
-                table: "Tickets",
-                type: "int",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)");
-
-            migrationBuilder.AlterColumn<int>(
-                name: "PointVal",
-                table: "Tickets",
-                type: "int",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)");
         }
     }
 }

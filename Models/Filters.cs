@@ -28,15 +28,15 @@ namespace TicketingSystem.Models
         public bool HasPointVal => PointVal.ToLower() != "all";
         public bool HasStatus => StatusId.ToLower() != "all";
 
-        // A dictionary with keys and values that are strings. Holds the value that will appear in
-        // the status dropdown list
+        // A dictionary with keys and values that are strings. Holds the value that will appear in status dropdown
         public static Dictionary<string, string> StatusFilterValues =>
             new Dictionary<string, string>
             {
-                { "td", "ToDo" },
-                { "ip", "InProgress" },
-                { "qa", "QualityAssurance" },
+                { "t", "ToDo" },
+                { "i", "InProgress" },
+                { "q", "QualityAssurance" },
                 { "d", "Done" }
             };
+
     }
 }

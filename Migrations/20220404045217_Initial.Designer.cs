@@ -9,7 +9,7 @@ using TicketingSystem.Models;
 namespace TicketingSystem.Migrations
 {
     [DbContext(typeof(TicketContext))]
-    [Migration("20220320185552_Initial")]
+    [Migration("20220404045217_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,6 +26,7 @@ namespace TicketingSystem.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -35,18 +36,18 @@ namespace TicketingSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "td",
-                            Name = "ToDo"
+                            Id = "t",
+                            Name = "To-Do"
                         },
                         new
                         {
-                            Id = "ip",
-                            Name = "InProgress"
+                            Id = "i",
+                            Name = "In Progress"
                         },
                         new
                         {
-                            Id = "qa",
-                            Name = "QualityAssurance"
+                            Id = "q",
+                            Name = "Quality Assurance"
                         },
                         new
                         {
@@ -62,15 +63,23 @@ namespace TicketingSystem.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("PointVal")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PointVal")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SprintNum")
-                        .HasColumnType("int");
+                    b.Property<string>("SprintNum")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StatusId")
                         .IsRequired()

@@ -19,8 +19,8 @@ namespace TicketingSystem.Controllers
         {
             var filters = new Filters(id);
             ViewBag.Filters = filters;
-            ViewBag.SprintNums = context.SprintNums.ToList();
-            ViewBag.PointVals = context.PointVals.ToList();
+            ViewBag.SprintNums = context.SprintNums.OrderByDescending(t => t.Id).ToList();
+            ViewBag.PointVals = context.PointVals.OrderByDescending(t => t.Id).ToList();
             ViewBag.Statuses = context.Statuses.ToList();
             ViewBag.StatusFilters = Filters.StatusFilterValues;
 
@@ -38,7 +38,7 @@ namespace TicketingSystem.Controllers
                 query = query.Where(t => t.StatusId == filters.StatusId);
             }
 
-            var tickets = query.OrderBy(t=>t.StatusId).ToList();
+            var tickets = query.OrderBy(t => t.StatusId).ToList();
             return View(tickets);
         }
 
@@ -81,7 +81,7 @@ namespace TicketingSystem.Controllers
         [HttpPost]
         public IActionResult Edit([FromRoute] string id, Ticket selected)
         {
-            if(selected.StatusId == null)
+            if (selected.StatusId == null)
             {
                 context.Tickets.Remove(selected);
             }

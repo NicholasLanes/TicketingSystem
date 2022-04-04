@@ -11,13 +11,13 @@
             </div>
             <div class="form-group">
                 <label>Point Value: </label>
-                <select name="filter" class="form-control" asp-items="@(new SelectList(ViewBag.PointVals, "Id", "Name"))">
+                <select name="filter" class="form-control" asp-items="@(new SelectList(ViewBag.PointVals, "Id", "Name").OrderBy(x=>x.Value))">
                     <option value="all">All</option>
                 </select>
             </div>
             <div class="form-group">
                 <label>Status: </label>
-                <select name="filter" class="form-control" asp-items="@(new SelectList(ViewBag.Statuses, "Id", "Name"))">
+                <select name="filter" class="form-control" asp-items="@(new SelectList(ViewBag.Statuses, "Id", "Name").OrderBy(x=>x.Value))">
                     <option value="all">All</option>
                 </select>
             </div>
@@ -33,7 +33,8 @@
                     <th>Name</th>
                     <th>Sprint Number</th>
                     <th>Point Value</th>
-                    <th>Status(Progress)</th>
+                    <th>Description</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,6 +44,7 @@
                         <td>@ticket.Name</td>
                         <td>@ticket.SprintNum</td>
                         <td>@ticket.PointVal</td>
+                        <td>@ticket.Description</td>
                         <td>@ticket.Status.Name</td>
                         <td>
                             <form asp-action="Edit" method="post" asp-route-id="@ViewBag.Filters.FilterString" class="mr-2">
