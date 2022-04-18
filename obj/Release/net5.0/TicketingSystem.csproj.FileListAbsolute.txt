@@ -65,3 +65,4 @@ B:\Nick\Documents\MyPrograms\TicketingSystem\obj\Release\net5.0\TicketingSystem.
 B:\Nick\Documents\MyPrograms\TicketingSystem\obj\Release\net5.0\ref\TicketingSystem.dll
 B:\Nick\Documents\MyPrograms\TicketingSystem\obj\Release\net5.0\TicketingSystem.pdb
 B:\Nick\Documents\MyPrograms\TicketingSystem\obj\Release\net5.0\TicketingSystem.genruntimeconfig.cache
+B:\Nick\Documents\MyPrograms\TicketingSystem\obj\Release\net5.0\Razor\Views\Shared\_StatusDropDownPartial.cshtml.g.cs

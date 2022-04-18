@@ -4,7 +4,7 @@
 
 <!-- Error Validation Summary -->
 <div asp-validation-summary="All" class="text-danger">
-    <h4>Correct the following errors:</h4>
+    
 </div>
 
 <form asp-action="Add" method="post">
@@ -31,13 +31,11 @@
     <!-- Status Value and Dropdown Selector -->
     <div class="form-group">
         <label asp-for="StatusId">Status: </label>
-        <select asp-for="StatusId" class="form-control" asp-items="@(new SelectList(ViewBag.Statuses, "Id", "Name"))">
-            <option value=""></option>
-        </select>
+        <vc:status-drop-down></vc:status-drop-down>
     </div>
-
-    <button type="submit" class="btn btn-primary">
-        Add
-    </button>
+    <!-- This submit-button uses SubmitButtonTagHelper in the Models folder -->
+    <submit-button>
+        Add Ticket
+    </submit-button>
     <a asp-action="Index" class="btn btn-primary">Cancel</a>
 </form>

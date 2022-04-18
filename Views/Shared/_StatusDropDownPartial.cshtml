@@ -1,0 +1,8 @@
+﻿@model StatusDropDownViewModel
+
+<div class="form-group">
+        <label asp-for="Statuses">Status: </label>
+        <select asp-for="Statuses" class="form-control" asp-items="@(new SelectList(Model.Statuses, "Id", "Name", Model.SelectedStatus))">
+            <option value="@Model.DefaultStatus">To-Do</option>
+        </select>
+</div>

@@ -9,8 +9,8 @@ using TicketingSystem.Models;
 namespace TicketingSystem.Migrations
 {
     [DbContext(typeof(TicketContext))]
-    [Migration("20220404062353_PointValSprintNumOptions")]
-    partial class PointValSprintNumOptions
+    [Migration("20220412215448_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

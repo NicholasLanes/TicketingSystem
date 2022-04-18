@@ -13,18 +13,15 @@ namespace TicketingSystem.Controllers
     public class HomeController : Controller
     {
         private TicketContext context;
-        public HomeController(TicketContext ctx) => context = ctx;
-
+        public HomeController(TicketContext ctx) => context = ctx; // dbcontext injection
         public IActionResult Index(string id)
         {
             var filters = new Filters(id);
             ViewBag.Filters = filters;
-            ViewBag.SprintNums = context.SprintNums.OrderByDescending(t => t.Id).ToList();
-            ViewBag.PointVals = context.PointVals.OrderByDescending(t => t.Id).ToList();
             ViewBag.Statuses = context.Statuses.ToList();
             ViewBag.StatusFilters = Filters.StatusFilterValues;
 
-            IQueryable<Ticket> query = context.Tickets;
+            IQueryable<Ticket> query = context.Tickets.AsQueryable();
             if (filters.HasSprintNum)
             {
                 query = query.Where(t => t.SprintNum == filters.SprintNum);
@@ -41,12 +38,10 @@ namespace TicketingSystem.Controllers
             var tickets = query.OrderBy(t => t.StatusId).ToList();
             return View(tickets);
         }
-
+        
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.SprintNums = context.SprintNums.ToList();
-            ViewBag.PointVals = context.PointVals.ToList();
             ViewBag.Statuses = context.Statuses.ToList();
             return View();
         }
@@ -58,15 +53,12 @@ namespace TicketingSystem.Controllers
             if (ModelState.IsValid)
             {
                 context.Tickets.Add(newticket); // Add ticket
-                context.SaveChanges(); // Save
+                context.SaveChanges();
                 return RedirectToAction("Index"); // Return to Home Page
             }
             // If there are validation errors
             else
             {
-                ViewBag.SprintNums = context.SprintNums.ToList();
-                ViewBag.PointVals = context.PointVals.ToList();
-                ViewBag.Statuses = context.Statuses.ToList();
                 return View(newticket);
             }
         }
@@ -83,16 +75,14 @@ namespace TicketingSystem.Controllers
         {
             if (selected.StatusId == null)
             {
-                context.Tickets.Remove(selected);
+                context.Remove(selected);
             }
             else
             {
                 string newStatusId = selected.StatusId.ToString();
-                selected = context.Tickets.Find(selected.Id);
+                selected = context.Tickets.ToList().Find(x => x.Id == selected.Id);
                 selected.StatusId = newStatusId;
-                context.Tickets.Update(selected);
             }
-            context.SaveChanges();
             return RedirectToAction("Index", new { Id = id });
         }
     }

@@ -7,6 +7,30 @@ namespace TicketingSystem.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "PointVals",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PointVals", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SprintNums",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SprintNums", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Statuses",
                 columns: table => new
                 {
@@ -27,8 +51,8 @@ namespace TicketingSystem.Migrations
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     SprintNum = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PointVal = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    StatusId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    StatusId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,13 +66,47 @@ namespace TicketingSystem.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "PointVals",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { "1", "1" },
+                    { "2", "2" },
+                    { "3", "3" },
+                    { "5", "5" },
+                    { "8", "8" },
+                    { "13", "13" },
+                    { "21", "21" },
+                    { "34", "34" },
+                    { "55", "55" },
+                    { "89", "89" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "SprintNums",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { "10", "10" },
+                    { "9", "9" },
+                    { "8", "8" },
+                    { "7", "7" },
+                    { "6", "6" },
+                    { "2", "2" },
+                    { "4", "4" },
+                    { "3", "3" },
+                    { "1", "1" },
+                    { "5", "5" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Statuses",
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
+                    { "q", "Quality Assurance" },
                     { "t", "To-Do" },
                     { "i", "In Progress" },
-                    { "q", "Quality Assurance" },
                     { "d", "Done" }
                 });
 
@@ -60,6 +118,12 @@ namespace TicketingSystem.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "PointVals");
+
+            migrationBuilder.DropTable(
+                name: "SprintNums");
+
             migrationBuilder.DropTable(
                 name: "Tickets");
 
